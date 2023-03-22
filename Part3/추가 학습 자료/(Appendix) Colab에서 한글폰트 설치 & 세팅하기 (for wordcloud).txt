@@ -1,0 +1,45 @@
+(방법 1)
+
+# 한글 폰트 설치하기 (설치 완료 시 "런타임 다시 시작")
+------------------------------------------------------------------
+!apt-get -qq install -y fonts-nanum
+!fc-cache -fv
+------------------------------------------------------------------
+
+# 폰트 테스트
+------------------------------------------------------------------
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+sns.set_style('ticks')
+sns.set_palette('colorblind')
+sns.set_context('talk')
+
+plt.rcParams['font.family'] = ['NanumGothic', 'sans-serif']
+plt.rcParams['axes.unicode_minus'] = False
+
+plt.title('가나다라마바사')
+plt.show()
+------------------------------------------------------------------
+
+
+
+(방법 2)
+
+# 한글 폰트 설치하기 (설치 완료 시 "런타임 다시 시작")
+------------------------------------------------------------------
+!apt install fonts-nanum -y
+------------------------------------------------------------------
+
+# 폰트 테스트
+------------------------------------------------------------------
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
+
+font_path = '/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf'
+font_name = font_manager.FontProperties(fname=font_path, size=10)
+rc('font', family='NanumBarunGothic')
+font_manager._rebuild()
+------------------------------------------------------------------
